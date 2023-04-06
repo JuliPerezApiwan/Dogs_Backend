@@ -21,7 +21,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { getApiData, getDbData } = require('./src/controllers/Dogs/saveApiData')
 const { saveApiDataTemperaments } = require('./src/controllers/Temperaments/saveApiDataTemperament')
-
+const port = process.env.PORT || 3001 
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then( async () => {
@@ -29,8 +29,8 @@ conn.sync({ force: false }).then( async () => {
   await getApiData();
   await getDbData();
   await saveApiDataTemperaments();
-  server.listen(3001, () => {
-  console.log('%s listening at 3001'); // eslint-disable-line no-console
+  server.listen(port, () => {
+  console.log(`%s listening at ${port}`); // eslint-disable-line no-console
   });
 }).catch((error) => {
   console.log(error);
