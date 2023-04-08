@@ -34,4 +34,4 @@ conn.sync({ force: false }).then( async () => {
   });
 }).catch((error) => {
   console.log(error);
-})
+});
